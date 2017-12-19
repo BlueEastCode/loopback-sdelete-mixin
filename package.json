@@ -1,6 +1,6 @@
 {
   "name": "loopback-sdelete-mixin-blueeast",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A mixin to automatically generate created and updated Date attributes for loopback Models",
   "main": "index.js",
   "scripts": {
