@@ -109,7 +109,7 @@ describe('Loopback softDelete mixin', () => {
           assert.isDefined(book2.deletedOn);
           assert.isUndefined(book2.deletedAt);
 
-          assert.isDefined(book3.deletedOn);
+          assert.isNull(book3.deletedOn);
         });
     });
 
