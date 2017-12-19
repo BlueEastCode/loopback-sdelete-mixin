@@ -10,7 +10,7 @@ Install
 -------
 
 ```bash
-  npm install --save loopback-sdelete-mixin
+  npm install --save loopback-sdelete-mixin-blueeast
 ```
 
 Configure

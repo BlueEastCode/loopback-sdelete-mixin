@@ -83,7 +83,7 @@ describe('Loopback softDelete mixin', () => {
         .then(([book1, book2, book3]) => {
           assert.isDefined(book1.deletedAt);
           assert.isDefined(book2.deletedAt);
-          assert.isUndefined(book3.deletedAt);
+          assert.isNull(book3.deletedAt);
         });
     });
 
@@ -109,7 +109,7 @@ describe('Loopback softDelete mixin', () => {
           assert.isDefined(book2.deletedOn);
           assert.isUndefined(book2.deletedAt);
 
-          assert.isUndefined(book3.deletedOn);
+          assert.isDefined(book3.deletedOn);
         });
     });
 
@@ -139,7 +139,7 @@ describe('Loopback softDelete mixin', () => {
           assert.isNull(book2.name);
           assert.isNull(book2.type);
 
-          assert.isUndefined(book3.deletedAt);
+          assert.isNull(book3.deletedAt);
         });
     });
   });
@@ -163,8 +163,8 @@ describe('Loopback softDelete mixin', () => {
         .then(([book1, book2, book3]) => {
           assert.isDefined(book1.deletedAt);
 
-          assert.isUndefined(book2.deletedAt);
-          assert.isUndefined(book3.deletedAt);
+          assert.isNull(book2.deletedAt);
+          assert.isNull(book3.deletedAt);
         });
     });
 
@@ -188,9 +188,9 @@ describe('Loopback softDelete mixin', () => {
           assert.isUndefined(book1.deletedAt);
 
           assert.isUndefined(book2.deletedAt);
-          assert.isUndefined(book2.deletedOn);
+          assert.isDefined(book2.deletedOn);
           assert.isUndefined(book3.deletedAt);
-          assert.isUndefined(book3.deletedOn);
+          assert.isDefined(book3.deletedOn);
         });
     });
 
@@ -210,7 +210,7 @@ describe('Loopback softDelete mixin', () => {
         .then(() => Book.destroyById(2))
         .then(() => Book.find(includeDeleted))
         .then(([book1, book2, book3]) => {
-          assert.isUndefined(book1.deletedAt);
+          assert.isNull(book1.deletedAt);
           assert.isNotNull(book1.name);
           assert.isNotNull(book1.type);
 
@@ -220,7 +220,7 @@ describe('Loopback softDelete mixin', () => {
           assert.isNull(book2.name);
           assert.isNull(book2.type);
 
-          assert.isUndefined(book3.deletedAt);
+          assert.isNull(book3.deletedAt);
           assert.isNotNull(book3.name);
           assert.isNotNull(book3.type);
         });
@@ -280,7 +280,7 @@ describe('Loopback softDelete mixin', () => {
         { id: {type: Number, generated: false, id: true}, name: String, type: String },
         { mixins: { SoftDelete: {_isDeleted: 'customDeleteField'} } }
       );
-      
+
       const booksCreated = [
         Book.create({ id: 1, name: 'book 1', type: 'fiction'}),
         Book.create({ id: 2, name: 'book 2', type: 'fiction'}),
@@ -300,7 +300,7 @@ describe('Loopback softDelete mixin', () => {
           assert.isDefined(book3.deletedAt);
           assert.isDefined(book3.customDeleteField);
         });
-  
+
     });
   });
 });
